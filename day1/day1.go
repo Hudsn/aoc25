@@ -16,7 +16,7 @@ var day1Bytes []byte
 type direction int
 
 const (
-	left = iota
+	left direction = iota
 	right
 )
 

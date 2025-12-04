@@ -29,7 +29,23 @@ type dial struct {
 	pointer int
 }
 
-func (d *dial) processInstruction(ins instruction) {
+func (d *dial) countZeroClicks(ins instruction) int {
+	distanceToZero := 100 - d.pointer
+	if ins.direction == left {
+		distanceToZero = d.pointer
+		if distanceToZero == 0 {
+			distanceToZero = 100
+		}
+	}
+	diff := distanceToZero - ins.count
+	if diff <= 0 {
+		diff *= -1
+		return 1 + (diff-(diff%100))/100
+	}
+	return 0
+}
+
+func (d *dial) updatePointer(ins instruction) {
 	if ins.direction == left {
 		d.moveRight(100 - (ins.count % 100)) // on a 100 position dial, moving right 25 == moving left 75
 	} else {
@@ -62,18 +78,20 @@ func textToInstruction(text string) instruction {
 	}
 }
 
-func Solve() {
-	scanner := bufio.NewScanner(bytes.NewBuffer(day1Bytes))
+func solve(input []byte) int {
+	scanner := bufio.NewScanner(bytes.NewBuffer(input))
 	counter := 0
 	dial := dial{
 		pointer: 50,
 	}
 	for scanner.Scan() {
 		instruction := textToInstruction(scanner.Text())
-		dial.processInstruction(instruction)
-		if dial.pointer == 0 {
-			counter++
-		}
+		counter += dial.countZeroClicks(instruction)
+		dial.updatePointer(instruction)
 	}
-	fmt.Printf("FLAG: %d\n", counter)
+	return counter
+}
+
+func Solve() {
+	fmt.Printf("FLAG: %d\n", solve(day1Bytes))
 }

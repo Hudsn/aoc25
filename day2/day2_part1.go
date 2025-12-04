@@ -11,7 +11,7 @@ import (
 //go:embed day2.txt
 var inputBytes []byte
 
-func solve(input string) int {
+func solveP1(input string) int {
 	count := 0
 	rangeStrings := strings.Split(input, ",")
 	for _, idRangeStr := range rangeStrings {
@@ -28,8 +28,8 @@ func solve(input string) int {
 	return count
 }
 
-func Solve() {
-	fmt.Printf("FLAG: %d\n", solve(string(inputBytes)))
+func SolveP1() {
+	fmt.Printf("FLAG: %d\n", solveP1(string(inputBytes)))
 }
 
 type idRange struct {

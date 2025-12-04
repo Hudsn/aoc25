@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/hudsn/aoc25/day1"
+	"github.com/hudsn/aoc25/day2"
 )
 
 func main() {
@@ -19,5 +20,6 @@ func main() {
 }
 
 var dayMap = map[int]func(){
-	1: day1.Day1Solve,
+	1: day1.Solve,
+	2: day2.Solve,
 }

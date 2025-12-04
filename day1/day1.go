@@ -62,7 +62,7 @@ func textToInstruction(text string) instruction {
 	}
 }
 
-func Day1Solve() {
+func Solve() {
 	scanner := bufio.NewScanner(bytes.NewBuffer(day1Bytes))
 	counter := 0
 	dial := dial{

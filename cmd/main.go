@@ -8,6 +8,7 @@ import (
 	"github.com/hudsn/aoc25/day2"
 	"github.com/hudsn/aoc25/day3"
 	"github.com/hudsn/aoc25/day4"
+	"github.com/hudsn/aoc25/day5"
 )
 
 func main() {
@@ -26,4 +27,5 @@ var dayMap = map[int]func(){
 	2: day2.SolveP2,
 	3: day3.SolveP2,
 	4: day4.Solve,
+	5: day5.Solve,
 }

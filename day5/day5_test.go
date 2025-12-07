@@ -1,7 +1,6 @@
 package day5
 
 import (
-	"fmt"
 	"log"
 	"testing"
 )
@@ -29,7 +28,6 @@ func TestP2(t *testing.T) {
 			log.Fatal("issue parsing id ranges")
 		}
 		ranges := mergeRangesR(freshRanges)
-		fmt.Println(ranges)
 		got := sumListRangeSlots(ranges)
 		if tt.want != got {
 			t.Errorf("incorrect outcome: want=%d. got=%d", tt.want, got)
